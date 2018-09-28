@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="'Детализация заказа № ' + ${{orderId}}">Детализация заказа</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:unless="${#lists.isEmpty(allPositions)}">
+    <h2 th:text="'Детализация заказа № ' + ${{orderId}} + ' от ' + ${orderDate}">Детализация заказа</h2>
+    <h2 th:text="'Наименование заказа: ' + ${orderName}">Наименование заказа</h2>
+    <table style="border: 1px solid #000;">
+        <thead>
+        <tr style="border: 1px solid #000;">
+            <th>Наименование товара</th>
+            <th>Кол-во</th>
+            <th>Цена (руб.)</th>
+            <th>Сумма (руб.)</th>
+            <th>Арх.</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr style="border: 1px solid #000;" th:each="ol : ${allPositions}">
+            <td style="border: 1px solid #000;" th:text="${{ol.name}}">
+                1
+            </td>
+            <td style="border: 1px solid #000;" th:text="${{ol.count}}">
+                13.01.2011
+            </td>
+            <td style="border: 1px solid #000;" th:text="${{ol.cost}}">
+                Name
+            </td>
+            <td style="border: 1px solid #000;" th:text="${{ol.summ}}">
+                Name
+            </td>
+            <td style="border: 1px solid #000;" th:text="${ol.isArchival}?'да':''">
+                да
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

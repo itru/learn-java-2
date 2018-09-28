@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список заказов</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div th:unless="${#lists.isEmpty(allOrders)}">
+        <h2>Список заказов</h2>
+        <table style="border: 1px solid #000;">
+            <thead>
+            <tr style="border: 1px solid #000;">
+                <th>№</th>
+                <th>Дата</th>
+                <th>Наименование заказа</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr style="border: 1px solid #000;" th:each="ol : ${allOrders}">
+                    <td style="border: 1px solid #000;" th:text="${{ol.id}}">
+                        1
+                    </td>
+                    <td style="border: 1px solid #000;" th:text="${{ol.date}}">
+                        13.01.2011
+                    </td>
+                    <td style="border: 1px solid #000;">
+                        <a th:href='@{/order(id=${{ol.id}})}'>
+                            <div th:text="${{ol.name}}">Zakaz</div>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
